@@ -10,7 +10,9 @@
 	<package name="crm" extends="struts-default" namespace="/">
 		<!-- 配置action，并将引用spring管理的actionbean -->
 		<action name="user_*" class="userAction" method="{1}">
-			<result name="login">/index.jsp</result>
+			<result name="login">/login.jsp</result>
+			<result name="success">/index.jsp</result>
 		</action>
+		<!-- 登陆 -->
 	</package>
 </struts>

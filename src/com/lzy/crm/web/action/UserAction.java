@@ -2,6 +2,7 @@ package com.lzy.crm.web.action;
 
 import com.lzy.crm.domain.User;
 import com.lzy.crm.service.UserService;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 
@@ -28,4 +29,21 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 		userService.regist(user);
 		return LOGIN;
 	} 
+	/**
+	 * 用户登陆
+	 */
+	public String login(){
+		
+		User userlogin = userService.login(user);
+		if(userlogin == null){
+			this.addActionError("用户或者密码错误");
+			return LOGIN;
+		}else{
+			
+			ActionContext.getContext().getSession().put("userlogin", userlogin);
+			return SUCCESS;
+		}
+		
+		
+	}
 }
