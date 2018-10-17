@@ -40,26 +40,39 @@
 		<property name="mappingResources">
 			<list>
 				<value>com/lzy/crm/domain/User.hbm.xml</value>
+				<value>com/lzy/crm/domain/Customer.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
-
-	<!-- 配置action -->
-	<bean id="userAction" class="com.lzy.crm.web.action.UserAction">
+	<!--  -->
+	<!-- 配置useraction -->
+	<bean id="userAction" class="com.lzy.crm.web.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
 	</bean>
 
-	<!-- 配置service -->
+	<!-- 配置userservice -->
 	<bean id="userService"
 		class="com.lzy.crm.service.impl.UserServiceImpl">
 		<property name="userDao" ref="userDao"></property>
 	</bean>
 
-	<!-- 配置dao -->
+	<!-- 配置userdao -->
 	<bean id="userDao" class="com.lzy.crm.dao.impl.UserDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
 	
+	<!-- 配置customerAction的bean -->
+	<bean id="customerAction" class="com.lzy.crm.web.action.CustomerAction" scope="prototype">
+		<property name="customerService" ref="customerService"/>
+	</bean>
+	<!-- 配置customerService的bean -->
+	<bean id="customerService" class="com.lzy.crm.service.impl.CustomerServiceImple">
+		<property name="customerDao" ref="customerDao"/>
+	</bean>
+	<!-- 配置custmerDao的bean -->
+	<bean id="customerDao" class="com.lzy.crm.dao.impl.CustomerDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 	<!-- 配置事物 -->
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">

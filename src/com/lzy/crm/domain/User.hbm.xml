@@ -5,7 +5,7 @@
 <hibernate-mapping>
 	<class name="com.lzy.crm.domain.User" table="sys_user">
 		<id name="user_id" column="user_id">
-			<generator class="native" />
+			<generator class="native"></generator>
 		</id>
 
 		<property name="user_code" column="user_code" />
