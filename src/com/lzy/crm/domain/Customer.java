@@ -19,8 +19,14 @@ public class Customer {
 		 */
 		private BaseDict baseDictSource;
 		private BaseDict baseDictIndustry;
-		private BaseDict baseDrictLevel;
+		private BaseDict baseDictLevel;
 		
+		public BaseDict getBaseDictLevel() {
+			return baseDictLevel;
+		}
+		public void setBaseDictLevel(BaseDict baseDictLevel) {
+			this.baseDictLevel = baseDictLevel;
+		}
 		public BaseDict getBaseDictSource() {
 			return baseDictSource;
 		}
@@ -32,12 +38,6 @@ public class Customer {
 		}
 		public void setBaseDictIndustry(BaseDict baseDictIndustry) {
 			this.baseDictIndustry = baseDictIndustry;
-		}
-		public BaseDict getBaseDrictLevel() {
-			return baseDrictLevel;
-		}
-		public void setBaseDrictLevel(BaseDict baseDrictLevel) {
-			this.baseDrictLevel = baseDrictLevel;
 		}
 		public Integer getCust_id() {
 			return cust_id;

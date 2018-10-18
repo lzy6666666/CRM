@@ -2,6 +2,8 @@ package com.lzy.crm.service.impl;
 
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import com.lzy.crm.dao.BaseDictDao;
 import com.lzy.crm.domain.BaseDict;
 import com.lzy.crm.service.BaseDictService;

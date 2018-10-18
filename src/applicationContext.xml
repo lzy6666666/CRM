@@ -79,7 +79,19 @@
 		class="org.springframework.orm.hibernate5.HibernateTransactionManager">
 		<property name="sessionFactory" ref="sessionFactory"></property>
 	</bean>
-
+	
+	<!--配置BaseDictAction  -->
+	<bean id="baseDictAction" class="com.lzy.crm.web.action.BaseDirtAction" scope="prototype">
+		<property name="baseDictService" ref="baseDictService"/>	
+	</bean>
+	<!-- 配置BaseDictService -->
+	<bean id="baseDictService" class="com.lzy.crm.service.impl.BaseDictServiceImpl">
+		<property name="baseDictDao" ref="baseDictDao"/>
+	</bean>
+	<!-- 配置BaseDictDao -->
+	<bean id="baseDictDao" class="com.lzy.crm.dao.impl.BaseDictDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
 	<!-- 开启注解事物 -->
 	<tx:annotation-driven transaction-manager="transactionManager" />
 </beans>
