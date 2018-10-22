@@ -28,7 +28,8 @@ public interface CustomerDao {
 	 * @return
 	 */
 	List<Customer> findByPage(DetachedCriteria detachedCriteria,Integer currPage, Integer pageSize);
-	Customer findById(Integer cust_id);//客户删除前的查询
-	void deleteById(Customer customerSigle);
+	Customer findById(Integer cust_id);//根据ID客户查询
+	void deleteById(Customer customerSigle);//客户数据删除
+	void update(Customer customer);//客户数据跟新
 	
 }

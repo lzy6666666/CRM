@@ -70,5 +70,11 @@ public class Customer {
 		public void setCust_img(String cust_img) {
 			this.cust_img = cust_img;
 		}
+		@Override
+		public String toString() {
+			return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + ", cust_phone=" + cust_phone
+					+ ", cust_mobile=" + cust_mobile + ", cust_img=" + cust_img + ", baseDictSource=" + baseDictSource
+					+ ", baseDictIndustry=" + baseDictIndustry + ", baseDictLevel=" + baseDictLevel + "]";
+		}
 		
 }

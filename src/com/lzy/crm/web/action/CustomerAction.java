@@ -132,4 +132,51 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		customerService.deleteById(customerSigle);
 		return"customer_delete";
 	}
+	/**
+	 * 客户修改，跳转修改页面
+	 */
+	public String edit(){
+		customer =  customerService.findById(customer.getCust_id());
+		System.out.println(customer.toString());
+		ActionContext.getContext().getValueStack().push(customer);
+		return "editSave";
+	}
+	/**
+	 * 客户信息修改
+	 * @throws IOException 
+	 */
+	public String update() throws IOException{
+		System.out.println("update==========================");
+		//判断文件是否被修改，有就保存
+		//文件上传
+		if(upload != null){
+			//删除原来的的文件
+			String cust_img = customer.getCust_img();
+			System.out.println(cust_img+"==================");
+			if(cust_img != null && !"".equals(cust_img)){
+				
+				File file = new File(cust_img);
+				file.delete();
+			}
+			
+			//路径
+			String path = "E:/crm";
+			//随机文件名
+			String uuidName = UploadUtil.getFileName(uploadFileName);	
+			//目录分离
+			String drictry = UploadUtil.getPath(uuidName);
+			String url = path+drictry;//创建最终路径
+			File file = new File(url);
+			//判断目录是否存在
+			if(!file.exists()){
+				file.mkdirs();
+			}
+			//文件上传
+			File destDir = new File(url+"/"+uuidName);
+			FileUtils.copyFile(upload, destDir);
+			customer.setCust_img(url+"/"+uuidName);
+		}
+		customerService.update(customer);//信息修改
+		return "update";
+	}
 }

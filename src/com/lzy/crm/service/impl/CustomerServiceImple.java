@@ -70,5 +70,12 @@ public class CustomerServiceImple implements CustomerService{
 		customerDao.deleteById(customerSigle);
 		
 	}
+	/**
+	 * 客户数据更新
+	 */
+	public void update(Customer customer) {
+		customerDao.update(customer);
+		
+	}
 
 }

@@ -20,6 +20,8 @@
 			<result name="customerSave" type="redirectAction">customer_find.action</result>
 			<result name="input">/jsp/customer/add.jsp</result>
 			<result name="customer_delete" type="redirectAction">customer_find.action</result>
+			<result name="editSave" >/jsp/customer/edit.jsp</result>
+			<result name="update" type="redirectAction">customer_find.action</result>
 			<!-- 文件拦截参数设置 -->
 			<interceptor-ref name="defaultStack">
 				<param name="fileUpload.maximumSize">2097152</param>

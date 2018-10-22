@@ -19,5 +19,6 @@ public interface CustomerService {
 	PageBean<Customer> findBayPage(DetachedCriteria detachedCriteria, Integer currPage, Integer pageSize);
 	Customer findById(Integer cust_id);
 	void deleteById(Customer customerSigle);
+	void update(Customer customer);//客户数据更新
 
 }
