@@ -13,6 +13,7 @@ public class Customer {
 		private String cust_level;*/
 		private String cust_phone;
 		private String cust_mobile;
+		private String cust_img;//图片地址 
 		/**
 		 * 在一的一方配置多的一方的对象
 		 * @return
@@ -63,4 +64,11 @@ public class Customer {
 		public void setCust_mobile(String cust_mobile) {
 			this.cust_mobile = cust_mobile;
 		}
+		public String getCust_img() {
+			return cust_img;
+		}
+		public void setCust_img(String cust_img) {
+			this.cust_img = cust_img;
+		}
+		
 }

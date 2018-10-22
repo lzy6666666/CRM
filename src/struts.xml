@@ -6,6 +6,7 @@
 	<!-- 常量配置 -->
 	<constant name="struts.action.extension" value="action"></constant>
 	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
+	<constant name="struts.multipart.maxSize" value="5242880"/>
 	<!-- 配置action的包 -->
 	<package name="crm" extends="struts-default" namespace="/">
 		<!-- 配置Userd的action，并将引用spring管理的actionbean -->
@@ -16,6 +17,15 @@
 		<!-- 配置customer的action-->
 		<action name="customer_*" class="customerAction" method="{1}">
 			<result name="find">/jsp/customer/list.jsp</result>	
+			<result name="customerSave" type="redirectAction">customer_find.action</result>
+			<result name="input">/jsp/customer/add.jsp</result>
+			<result name="customer_delete" type="redirectAction">customer_find.action</result>
+			<!-- 文件拦截参数设置 -->
+			<interceptor-ref name="defaultStack">
+				<param name="fileUpload.maximumSize">2097152</param>
+				<param name="fileUpload.allowedExtensionsSet">.jsp</param>
+			</interceptor-ref>
+			
 		</action>
 		<!-- 配置字典 -->
 		<action name="baseDictAction" class="baseDictAction" method="getBaseDict"></action>

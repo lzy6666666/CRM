@@ -20,19 +20,19 @@ public class UploadUtil {
 		int index = FileName.lastIndexOf(".");
 		String extion = FileName.substring(index);
 		String uuidName = UUID.randomUUID().toString().replace("-", "");
-		String NewFileName = uuidName+extion;
-		return NewFileName;	
+		String newFileName = uuidName+extion;
+		return newFileName;	
 	}
 	/**
 	 * 目录分离
 	 */
-	public static String getPath(String uuidName){
+	public static String getPath(String newFileName){
 		
-		int codl = uuidName.hashCode();
-		int cdl = codl & 0xf;//一级目录
-		int cd = cdl >>>4;
-		int d  = cd & 0xf;//二级目录
-		return "/"+cd+"/"+d;
+		int codl = newFileName.hashCode();
+		int cd1 = codl & 0xf;//一级目录
+		int cd = codl>>>4;
+		int cd2  = cd & 0xf;//二级目录
+		return "/"+cd1+"/"+cd2;
 		
 		
 	}

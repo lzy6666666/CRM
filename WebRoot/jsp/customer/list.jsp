@@ -100,7 +100,7 @@
 													<TD>
 													<a href="${pageContext.request.contextPath }/">修改</a>
 													&nbsp;&nbsp;
-													<a href="${pageContext.request.contextPath }/">删除</a>
+													<a href="${pageContext.request.contextPath }/customer_delete.action?cust_id=<s:property value="cust_id"/>">删除</a>
 													</TD>
 												</TR>
 												</s:iterator>

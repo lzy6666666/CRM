@@ -54,5 +54,21 @@ public class CustomerServiceImple implements CustomerService{
 		pageBean.setList(customers);
 		return pageBean;
 	}
+	/**
+	 * 删除前的查询
+	 */
+	public Customer findById(Integer cust_id) {
+		// TODO Auto-generated method stub
+		Customer customer = customerDao.findById(cust_id);
+		return customer;
+	}
+	/**
+	 * 客户删除
+	 */
+	public void deleteById(Customer customerSigle) {
+		// TODO Auto-generated method stub
+		customerDao.deleteById(customerSigle);
+		
+	}
 
 }

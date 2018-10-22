@@ -43,5 +43,21 @@ public class CustomerDaoImpl extends HibernateDaoSupport implements CustomerDao 
 		List<Customer> list = (List<Customer>) this.getHibernateTemplate().findByCriteria(detachedCriteria,currPage,pageSize);
 		return list;
 	}
+	/**
+	 * 根据ID查询客户
+	 */
+	public Customer findById(Integer cust_id) {
+		// TODO Auto-generated method stub
+		Customer customer = this.getHibernateTemplate().get(Customer.class, cust_id);
+		return customer;
+	}
+	/**
+	 * 根据ID删除客户
+	 */
+	public void deleteById(Customer customerSigle) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().delete(customerSigle);
+		
+	}
 
 }

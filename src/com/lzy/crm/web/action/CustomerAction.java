@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.apache.commons.io.FileUtils;
+import org.aspectj.apache.bcel.classfile.Field;
 import org.hibernate.criterion.DetachedCriteria;
 
 import com.lzy.crm.domain.Customer;
@@ -43,8 +44,7 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 	//Struts文件上传拦截器中的三个属性值
 	private String uploadFileName;
 	private File   upload;
-	private String uploadContenType;
-	
+	private String uploadContentType;
 	public void setUploadFileName(String uploadFileName) {
 		this.uploadFileName = uploadFileName;
 	}
@@ -53,15 +53,16 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		this.upload = upload;
 	}
 
-	public void setUploadContenType(String uploadContenType) {
-		this.uploadContenType = uploadContenType;
+	public void setUploadContentType(String uploadContentType) {
+		this.uploadContentType = uploadContentType;
 	}
+
 	//保存
 	public String save() throws IOException{
 		//文件上传
 		if(upload != null){
 			//路径
-			String path = "E:/";
+			String path = "E:/crm";
 			//随机文件名
 			String uuidName = UploadUtil.getFileName(uploadFileName);	
 			System.out.println("uuid名字"+uuidName);
@@ -72,19 +73,20 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 			System.out.println("最终路径"+url);
 			File file = new File(url);
 			//判断目录是否存在
-			if(file.exists()){
+			if(!file.exists()){
 				file.mkdirs();
 			}
 			//文件上传
 			File destDir = new File(url+"/"+uuidName);
 			System.out.println(destDir);
-			FileUtils.copyDirectory(upload, destDir);
+			FileUtils.copyFile(upload, destDir);
+			customer.setCust_img(url+"/"+uuidName);
 		}
 		
 		
 		//保存客户信息
 		customerService.save(customer);
-		return null;
+		return "customerSave";
 	}
 	/**
 	 * 
@@ -113,5 +115,21 @@ public class CustomerAction extends ActionSupport implements ModelDriven<Custome
 		PageBean<Customer> pageBean = customerService.findBayPage(detachedCriteria,currPage,pageSize); 
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "find";
+	}
+	
+	/**
+	 * 客户的删除
+	 */
+	public String delete(){
+		Customer customerSigle =  customerService.findById(customer.getCust_id());
+		//删除本地的图片
+		if(customerSigle.getCust_img() != null){
+			File file = new File(customerSigle.getCust_img());
+			if(file.exists()){
+				file.delete();	
+			}			
+		}
+		customerService.deleteById(customerSigle);
+		return"customer_delete";
 	}
 }
