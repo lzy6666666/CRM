@@ -14,7 +14,8 @@
 			<result name="success">/index.jsp</result>
 		</action>
 		<!-- 配置customer的action-->
-		<action name="customer_*" class="customerAction" method="{1}">	
+		<action name="customer_*" class="customerAction" method="{1}">
+			<result name="find">/jsp/customer/list.jsp</result>	
 		</action>
 		<!-- 配置字典 -->
 		<action name="baseDictAction" class="baseDictAction" method="getBaseDict"></action>
