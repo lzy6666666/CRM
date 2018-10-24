@@ -87,6 +87,18 @@
 	<bean id="baseDictDao" class="com.lzy.crm.dao.impl.BaseDictDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<!-- 配置LinkManDao -->
+	<bean id="linkManDao" class="com.lzy.crm.dao.impl.LinkManDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory"/>
+	</bean>
+	<!--配置LinkManService  -->
+	<bean id="linkManService" class="com.lzy.crm.service.impl.LinkManServiceImpl">
+		<property name="linkManDao" ref="linkManDao"></property>
+	</bean>
+	<!-- 配置linkManAction -->
+	<bean id="linkManAction" class="com.lzy.crm.web.action.LinkManAction">
+		<property name="linkManService" ref="linkManService"/>
+	</bean>
 	
 	<!-- 配置事物 -->
 	<bean id="transactionManager"

@@ -1,4 +1,7 @@
 package com.lzy.crm.domain;
+
+import java.util.Set;
+
 /**
  * Customer的实体类
  * @author Administrator
@@ -21,6 +24,15 @@ public class Customer {
 		private BaseDict baseDictSource;
 		private BaseDict baseDictIndustry;
 		private BaseDict baseDictLevel;
+		//在一的一方放置多的集合
+		private Set<LinkMan> hashSet;
+				
+		public Set<LinkMan> getHashSet() {
+			return hashSet;
+		}
+		public void setHashSet(Set<LinkMan> hashSet) {
+			this.hashSet = hashSet;
+		}
 		public Integer getCust_id() {
 			return cust_id;
 		}
