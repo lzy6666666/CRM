@@ -19,11 +19,11 @@ public class PageBean<T> {
 	public void setCurrPage(Integer currPage) {
 		this.currPage = currPage;
 	}
-	public Integer getPagrSize() {
+	public Integer getPageSize() {
 		return pageSize;
 	}
-	public void setPagrSize(Integer pagrSize) {
-		this.pageSize = pagrSize;
+	public void setPageSize(Integer pageSize) {
+		this.pageSize = pageSize;
 	}
 	public Integer getTotalCount() {
 		return totalCount;
@@ -45,9 +45,10 @@ public class PageBean<T> {
 	}
 	@Override
 	public String toString() {
-		return "PageBean [currPage=" + currPage + ", pagrSize=" + pageSize + ", totalCount=" + totalCount
+		return "PageBean [currPage=" + currPage + ", pageSize=" + pageSize + ", totalCount=" + totalCount
 				+ ", totalPage=" + totalPage + ", list=" + list + "]";
 	}
+	
 	
 	
 }

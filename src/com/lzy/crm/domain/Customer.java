@@ -21,25 +21,6 @@ public class Customer {
 		private BaseDict baseDictSource;
 		private BaseDict baseDictIndustry;
 		private BaseDict baseDictLevel;
-		
-		public BaseDict getBaseDictLevel() {
-			return baseDictLevel;
-		}
-		public void setBaseDictLevel(BaseDict baseDictLevel) {
-			this.baseDictLevel = baseDictLevel;
-		}
-		public BaseDict getBaseDictSource() {
-			return baseDictSource;
-		}
-		public void setBaseDictSource(BaseDict baseDictSource) {
-			this.baseDictSource = baseDictSource;
-		}
-		public BaseDict getBaseDictIndustry() {
-			return baseDictIndustry;
-		}
-		public void setBaseDictIndustry(BaseDict baseDictIndustry) {
-			this.baseDictIndustry = baseDictIndustry;
-		}
 		public Integer getCust_id() {
 			return cust_id;
 		}
@@ -70,11 +51,29 @@ public class Customer {
 		public void setCust_img(String cust_img) {
 			this.cust_img = cust_img;
 		}
+		public BaseDict getBaseDictSource() {
+			return baseDictSource;
+		}
+		public void setBaseDictSource(BaseDict baseDictSource) {
+			this.baseDictSource = baseDictSource;
+		}
+		public BaseDict getBaseDictIndustry() {
+			return baseDictIndustry;
+		}
+		public void setBaseDictIndustry(BaseDict baseDictIndustry) {
+			this.baseDictIndustry = baseDictIndustry;
+		}
+		public BaseDict getBaseDictLevel() {
+			return baseDictLevel;
+		}
+		public void setBaseDictLevel(BaseDict baseDictLevel) {
+			this.baseDictLevel = baseDictLevel;
+		}
 		@Override
 		public String toString() {
 			return "Customer [cust_id=" + cust_id + ", cust_name=" + cust_name + ", cust_phone=" + cust_phone
-					+ ", cust_mobile=" + cust_mobile + ", cust_img=" + cust_img + ", baseDictSource=" + baseDictSource
-					+ ", baseDictIndustry=" + baseDictIndustry + ", baseDictLevel=" + baseDictLevel + "]";
+					+ ", cust_mobile=" + cust_mobile + ", cust_img=" + cust_img + "]";
 		}
+
 		
 }

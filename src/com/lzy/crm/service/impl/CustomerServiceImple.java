@@ -38,7 +38,7 @@ public class CustomerServiceImple implements CustomerService{
 		//将查询参数封装到PageBean
 		PageBean<Customer> pageBean = new PageBean<Customer>();
 		pageBean.setCurrPage(currPage);
-		pageBean.setPagrSize(pageSize);
+		pageBean.setPageSize(pageSize);
 		//获得数据总数量
 		Integer totalCount = customerDao.findCount(detachedCriteria);
 		pageBean.setTotalCount(totalCount);
