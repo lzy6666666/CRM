@@ -1,5 +1,7 @@
 package com.lzy.crm.service;
 
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 
 import com.lzy.crm.domain.Customer;
@@ -20,5 +22,6 @@ public interface CustomerService {
 	Customer findById(Integer cust_id);
 	void deleteById(Customer customerSigle);
 	void update(Customer customer);//客户数据更新
+	List<Customer> findAll();//查询所有客户
 
 }

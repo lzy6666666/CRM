@@ -12,4 +12,6 @@ public interface LinkManService {
 	LinkMan findById(Integer lkm_id);
 	//根据对象删除联系人
 	void delete(LinkMan linkMan);
+	//联系人数据更新
+	void update(LinkMan linkMan);
 }

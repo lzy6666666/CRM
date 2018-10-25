@@ -50,5 +50,12 @@ public class LinkManDaoImpl extends HibernateDaoSupport implements LinkManDao  {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().delete(linkMan);
 	}
+	/**
+	 * 跟新联系人数据
+	 */
+	public void update(LinkMan linkMan) {
+		// TODO Auto-generated method stub
+		this.getHibernateTemplate().update(linkMan);
+	}
 
 }

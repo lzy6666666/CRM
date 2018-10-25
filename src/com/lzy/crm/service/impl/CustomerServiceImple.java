@@ -77,5 +77,13 @@ public class CustomerServiceImple implements CustomerService{
 		customerDao.update(customer);
 		
 	}
+	/**
+	 * 查询所有客户
+	 */
+	public List<Customer> findAll() {
+		// TODO Auto-generated method stub
+		List<Customer> customers = customerDao.findAll();
+		return customers;
+	}
 
 }

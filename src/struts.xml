@@ -36,6 +36,10 @@
 		<action name="linkMan_*" class="linkManAction" method="{1}">
 			<result name="find">/jsp/linkman/list.jsp</result>
 			<result name="delete" type="redirectAction">linkMan_find.action</result>
+			<result name="edit" >/jsp/linkman/edit.jsp</result>
+			<result name="update" type="redirectAction">linkMan_find.action</result>
+			<result name="findCst">/jsp/linkman/add.jsp</result>
+			<result name="save" type="redirectAction">linkMan_find.action</result>
 		</action>
 		
 	</package>

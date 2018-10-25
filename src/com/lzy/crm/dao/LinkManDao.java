@@ -15,4 +15,6 @@ public interface LinkManDao {
 	LinkMan findById(Integer lkm_id);//根据id查询
 	
 	void delete(LinkMan linkMan);//根据对象删除联系人
+
+	void update(LinkMan linkMan);//跟新联系人数据
 }

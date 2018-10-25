@@ -102,6 +102,7 @@
 	<!-- 配置linkManAction -->
 	<bean id="linkManAction" class="com.lzy.crm.web.action.LinkManAction">
 		<property name="linkManService" ref="linkManService"/>
+		<property name="customerService" ref="customerService"></property>
 	</bean>
 	
 	

@@ -31,5 +31,6 @@ public interface CustomerDao {
 	Customer findById(Integer cust_id);//根据ID客户查询
 	void deleteById(Customer customerSigle);//客户数据删除
 	void update(Customer customer);//客户数据跟新
+	List<Customer> findAll();//查询所有客户
 	
 }

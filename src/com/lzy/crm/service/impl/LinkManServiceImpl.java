@@ -37,8 +37,11 @@ public class LinkManServiceImpl implements LinkManService {
 		pageBean.setTotalCount(totalCount);
 		pageBean.setTotalPage(totalPage);
 		
+		//查询的初始位置
+		Integer row = (currPage-1)*pageSize;
+		
 		//查询联系人，并封装入pageBean
-		List<LinkMan>  linkMans =  linkManDao.findAll(detachedCriteria,currPage,pageSize);
+		List<LinkMan>  linkMans =  linkManDao.findAll(detachedCriteria,row,pageSize);
 		pageBean.setList(linkMans);
 			
 		return pageBean;
@@ -57,6 +60,13 @@ public class LinkManServiceImpl implements LinkManService {
 	public void delete(LinkMan linkMan) {
 		// TODO Auto-generated method stub
 		linkManDao.delete(linkMan);
+	}
+	/**
+	 * 跟新联系人数据
+	 */
+	public void update(LinkMan linkMan) {
+		// TODO Auto-generated method stub
+		linkManDao.update(linkMan);
 	}
 	
 	

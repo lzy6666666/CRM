@@ -1,10 +1,14 @@
 package com.lzy.crm.web.action;
 
+import java.util.List;
+
 import org.hibernate.criterion.DetachedCriteria;
 
 import com.lzy.crm.dao.LinkManDao;
+import com.lzy.crm.domain.Customer;
 import com.lzy.crm.domain.LinkMan;
 import com.lzy.crm.domain.PageBean;
+import com.lzy.crm.service.CustomerService;
 import com.lzy.crm.service.LinkManService;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
@@ -49,7 +53,6 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	public String find(){
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(LinkMan.class);
 		PageBean<LinkMan> pageBean = linkManService.find(detachedCriteria,currPage,pageSize);
-		System.out.println(pageBean.getList().get(0).toString());
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "find";
 	}
@@ -63,5 +66,49 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 		linkManService.delete(linkMan);
 		return "delete";
 	}
+	/**
+	 * 数据更新页面的数据回显
+	 */
 	
+	public String edit(){
+		
+		
+		linkMan = linkManService.findById(linkMan.getLkm_id());
+		
+		return "edit";
+	}
+	
+	/**
+	 * 数据更新
+	 */
+	public String update(){
+		
+		linkMan =  linkManService.findById(linkMan.getLkm_id());
+		linkManService.update(linkMan);
+		return "update";
+	}
+	/**
+	 * 查询客户信息回显到联系人列表
+	 */
+	//注入CustomerService
+	private CustomerService customerService;
+	public void setCustomerService(CustomerService customerService) {
+		this.customerService = customerService;
+	}
+	public String findCst(){
+		
+		List<Customer> customers = customerService.findAll();
+		ActionContext.getContext().getValueStack().set("list",customers);
+		return "findCst";
+	}
+	
+	/**
+	 * 数据保存
+	 */
+	public String save(){
+		
+		/*linkManService.save(linkMan);*/
+		
+		return "save";
+	}
 }
