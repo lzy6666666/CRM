@@ -33,7 +33,10 @@
 		<action name="baseDictAction" class="baseDictAction" method="getBaseDict"></action>
 		
 		<!-- 配置联系人 -->
-		<action name="linkManAction_*" class="linkManAction" method="{1}"></action>
+		<action name="linkMan_*" class="linkManAction" method="{1}">
+			<result name="find">/jsp/linkman/list.jsp</result>
+			<result name="delete" type="redirectAction">linkMan_find.action</result>
+		</action>
 		
 	</package>
 </struts>

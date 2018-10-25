@@ -1,5 +1,6 @@
 package com.lzy.crm.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 /**
@@ -25,13 +26,13 @@ public class Customer {
 		private BaseDict baseDictIndustry;
 		private BaseDict baseDictLevel;
 		//在一的一方放置多的集合
-		private Set<LinkMan> hashSet;
+		private Set<LinkMan> linkMans = new HashSet<LinkMan>();
 				
-		public Set<LinkMan> getHashSet() {
-			return hashSet;
+		public Set<LinkMan> getLinkMans() {
+			return linkMans;
 		}
-		public void setHashSet(Set<LinkMan> hashSet) {
-			this.hashSet = hashSet;
+		public void setLinkMans(Set<LinkMan> linkMans) {
+			this.linkMans = linkMans;
 		}
 		public Integer getCust_id() {
 			return cust_id;

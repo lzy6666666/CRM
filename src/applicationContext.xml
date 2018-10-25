@@ -41,6 +41,7 @@
 				<value>com/lzy/crm/domain/User.hbm.xml</value>
 				<value>com/lzy/crm/domain/Customer.hbm.xml</value>
 				<value>com/lzy/crm/domain/BaseDict.hbm.xml</value>
+				<value>com/lzy/crm/domain/LinkMan.hbm.xml</value>
 			</list>
 		</property>
 	</bean>
@@ -87,6 +88,9 @@
 	<bean id="baseDictDao" class="com.lzy.crm.dao.impl.BaseDictDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	
+	
+	
 	<!-- 配置LinkManDao -->
 	<bean id="linkManDao" class="com.lzy.crm.dao.impl.LinkManDaoImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
@@ -99,6 +103,8 @@
 	<bean id="linkManAction" class="com.lzy.crm.web.action.LinkManAction">
 		<property name="linkManService" ref="linkManService"/>
 	</bean>
+	
+	
 	
 	<!-- 配置事物 -->
 	<bean id="transactionManager"
