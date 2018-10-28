@@ -3,6 +3,7 @@ package com.lzy.crm.web.action;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Restrictions;
 
 import com.lzy.crm.dao.LinkManDao;
 import com.lzy.crm.domain.Customer;
@@ -31,6 +32,11 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	public void setLinkManService(LinkManService linkManService) {
 		this.linkManService = linkManService;
 	}
+	//注入CustomerService
+	private CustomerService customerService;
+	public void setCustomerService(CustomerService customerService) {
+		this.customerService = customerService;
+	}
 
 	//条件带分页查询
 	private Integer currPage = 1;//当前页
@@ -52,6 +58,15 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	// 条件带分页查询
 	public String find(){
 		DetachedCriteria detachedCriteria = DetachedCriteria.forClass(LinkMan.class);
+		//条件参数设置
+		if(linkMan.getLkm_name() != null && !"".equals(linkMan.getLkm_name())){
+			detachedCriteria.add(Restrictions.like("lkm_name", "%"+linkMan.getLkm_name()+"%"));
+			
+		}
+		if(linkMan.getLkm_gender() != null && !"".equals(linkMan.getLkm_gender())){
+			detachedCriteria.add(Restrictions.eq("lkm_gender", linkMan.getLkm_gender()));
+		}
+		
 		PageBean<LinkMan> pageBean = linkManService.find(detachedCriteria,currPage,pageSize);
 		ActionContext.getContext().getValueStack().push(pageBean);
 		return "find";
@@ -69,12 +84,11 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	/**
 	 * 数据更新页面的数据回显
 	 */
-	
 	public String edit(){
-		
-		
-		linkMan = linkManService.findById(linkMan.getLkm_id());
-		
+		//查询客户列表回显到联系人更新页
+		List<Customer> customers = customerService.findAll();
+		ActionContext.getContext().getValueStack().set("list",customers);
+		linkMan = linkManService.findById(linkMan.getLkm_id());	
 		return "edit";
 	}
 	
@@ -82,19 +96,12 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	 * 数据更新
 	 */
 	public String update(){
-		
-		linkMan =  linkManService.findById(linkMan.getLkm_id());
 		linkManService.update(linkMan);
 		return "update";
 	}
 	/**
-	 * 查询客户信息回显到联系人列表
+	 * 查询客户信息回显到联系人保存页
 	 */
-	//注入CustomerService
-	private CustomerService customerService;
-	public void setCustomerService(CustomerService customerService) {
-		this.customerService = customerService;
-	}
 	public String findCst(){
 		
 		List<Customer> customers = customerService.findAll();
@@ -106,9 +113,8 @@ public class LinkManAction extends ActionSupport implements ModelDriven<LinkMan>
 	 * 数据保存
 	 */
 	public String save(){
-		
-		/*linkManService.save(linkMan);*/
-		
+		System.out.println(linkMan.toString());
+		linkManService.save(linkMan);
 		return "save";
 	}
 }

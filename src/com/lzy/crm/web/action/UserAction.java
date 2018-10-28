@@ -1,5 +1,7 @@
 package com.lzy.crm.web.action;
 
+import org.apache.struts2.ServletActionContext;
+
 import com.lzy.crm.domain.User;
 import com.lzy.crm.service.UserService;
 import com.opensymphony.xwork2.ActionContext;
@@ -40,7 +42,8 @@ public class UserAction extends ActionSupport implements ModelDriven<User>{
 			return LOGIN;
 		}else{
 			
-			ActionContext.getContext().getSession().put("userlogin", userlogin);
+			/*ActionContext.getContext().getSession().put("userlogin", userlogin);*/
+			ServletActionContext.getRequest().getSession().setAttribute("userlogin", userlogin);
 			return SUCCESS;
 		}
 		

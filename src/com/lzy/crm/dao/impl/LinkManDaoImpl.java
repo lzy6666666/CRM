@@ -57,5 +57,12 @@ public class LinkManDaoImpl extends HibernateDaoSupport implements LinkManDao  {
 		// TODO Auto-generated method stub
 		this.getHibernateTemplate().update(linkMan);
 	}
+	/**
+	 * 保存联系人
+	 */
+	public void save(LinkMan linkMan) {
+		this.getHibernateTemplate().save(linkMan);
+		
+	}
 
 }

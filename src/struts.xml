@@ -7,13 +7,31 @@
 	<constant name="struts.action.extension" value="action"></constant>
 	<constant name="struts.i18n.encoding" value="UTF-8"></constant>
 	<constant name="struts.multipart.maxSize" value="5242880"/>
+
 	<!-- 配置action的包 -->
 	<package name="crm" extends="struts-default" namespace="/">
+	
+		<!-- 配置拦截器 -->
+		<interceptors>
+			<interceptor name="privilegeInterceptor" class="com.lzy.crm.web.interceptor.PrivilegeInterceptor"/>
+		</interceptors>
+	
+		<!-- 配置全局的result -->
+		<global-results>
+			<result name="login">/login.jsp</result>
+		</global-results>
+	
 		<!-- 配置Userd的action，并将引用spring管理的actionbean -->
 		<action name="user_*" class="userAction" method="{1}">
 			<result name="login">/login.jsp</result>
 			<result name="success">/index.jsp</result>
+			<interceptor-ref name="privilegeInterceptor">
+				<param name="excludeMethods">regist,login</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"/>
 		</action>
+		
+		
 		<!-- 配置customer的action-->
 		<action name="customer_*" class="customerAction" method="{1}">
 			<result name="find">/jsp/customer/list.jsp</result>	
@@ -23,6 +41,7 @@
 			<result name="editSave" >/jsp/customer/edit.jsp</result>
 			<result name="update" type="redirectAction">customer_find.action</result>
 			<!-- 文件拦截参数设置 -->
+			<interceptor-ref name="privilegeInterceptor"/>
 			<interceptor-ref name="defaultStack">
 				<param name="fileUpload.maximumSize">2097152</param>
 				<param name="fileUpload.allowedExtensionsSet">.jsp</param>
@@ -30,7 +49,10 @@
 			
 		</action>
 		<!-- 配置字典 -->
-		<action name="baseDictAction" class="baseDictAction" method="getBaseDict"></action>
+		<action name="baseDictAction" class="baseDictAction" method="getBaseDict">
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
 		
 		<!-- 配置联系人 -->
 		<action name="linkMan_*" class="linkManAction" method="{1}">
@@ -40,6 +62,16 @@
 			<result name="update" type="redirectAction">linkMan_find.action</result>
 			<result name="findCst">/jsp/linkman/add.jsp</result>
 			<result name="save" type="redirectAction">linkMan_find.action</result>
+			<result name="input">/err.jsp</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
+		</action>
+		
+		<!--配置客户拜访记录  -->
+		<action name="saleVisit_*" class="com.lzy.crm.web.action.SaleVisitAction" method="{1}">
+			<result name="findAll">/jsp/saleVisit/list.jsp</result>
+			<interceptor-ref name="privilegeInterceptor"/>
+			<interceptor-ref name="defaultStack"/>
 		</action>
 		
 	</package>

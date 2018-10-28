@@ -10,6 +10,9 @@
 	http://www.springframework.org/schema/aop/spring-aop.xsd
 	http://www.springframework.org/schema/tx 
 	http://www.springframework.org/schema/tx/spring-tx.xsd">
+	<!-- 开起属性注入驱动 -->
+	<context:annotation-config/>
+	
 	<!-- 引用base的配置文件 -->
 	<context:property-placeholder location="classpath:jdbc.properties" />
 	<!-- c3p0的配置 -->
@@ -42,10 +45,12 @@
 				<value>com/lzy/crm/domain/Customer.hbm.xml</value>
 				<value>com/lzy/crm/domain/BaseDict.hbm.xml</value>
 				<value>com/lzy/crm/domain/LinkMan.hbm.xml</value>
+				<value>com/lzy/crm/domain/SaleVisit.hbm..xml</value>
 			</list>
 		</property>
 	</bean>
-	<!--  -->
+	
+	
 	<!-- 配置useraction -->
 	<bean id="userAction" class="com.lzy.crm.web.action.UserAction" scope="prototype">
 		<property name="userService" ref="userService"></property>
@@ -92,7 +97,7 @@
 	
 	
 	<!-- 配置LinkManDao -->
-	<bean id="linkManDao" class="com.lzy.crm.dao.impl.LinkManDaoImpl">
+	<bean id="linkManDao" class="com.lzy.crm.dao.impl.LinkManDaoImpl" scope="prototype">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
 	<!--配置LinkManService  -->
@@ -104,6 +109,18 @@
 		<property name="linkManService" ref="linkManService"/>
 		<property name="customerService" ref="customerService"></property>
 	</bean>
+	
+	
+
+	
+	<!-- 配置salevisitDao -->
+	<bean id="saleVisitDao" class="com.lzy.crm.dao.impl.SaleVisitDaoImpl" scope="prototype">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!--配置saleVisitService -->
+	<bean id="saleVisitService" class="com.lzy.crm.service.impl.SaleVisitServiceImpl"></bean>
+	<!--配置saleVisiAction  -->
+	<bean id="saleVisitAction" class="com.lzy.crm.web.action.SaleVisitAction"></bean>
 	
 	
 	

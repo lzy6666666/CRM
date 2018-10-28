@@ -155,11 +155,11 @@ A.active {
 											cellPadding=2 width=155 align=center border=0>
 											<TBODY>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="linkMan_findCst.action"
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath}/linkMan_findCst.action"
 														target=main>－ 新增联系人</A></TD>
 												</TR>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="linkMan_find.action"
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath}/linkMan_find.action"
 														target=main>－联系人列表</A></TD>
 												</TR>
 												
@@ -184,7 +184,7 @@ A.active {
 														target=main>－新增客户拜访</A></TD>
 												</TR>
 												<TR>
-													<TD class=menuSmall><A class=style2 href="#"
+													<TD class=menuSmall><A class=style2 href="${pageContext.request.contextPath}/saleVisit_findAll.action"
 														target=main>－客户拜访列表</A></TD>
 												</TR>
 												

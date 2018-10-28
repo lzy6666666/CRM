@@ -68,6 +68,13 @@ public class LinkManServiceImpl implements LinkManService {
 		// TODO Auto-generated method stub
 		linkManDao.update(linkMan);
 	}
+	/**
+	 * 保存联系人
+	 */
+	public void save(LinkMan linkMan) {
+		linkManDao.save(linkMan);
+		
+	}
 	
 	
 }

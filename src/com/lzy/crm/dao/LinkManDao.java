@@ -17,4 +17,6 @@ public interface LinkManDao {
 	void delete(LinkMan linkMan);//根据对象删除联系人
 
 	void update(LinkMan linkMan);//跟新联系人数据
+
+	void save(LinkMan linkMan);//保存联系人
 }

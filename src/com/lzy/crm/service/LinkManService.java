@@ -14,4 +14,6 @@ public interface LinkManService {
 	void delete(LinkMan linkMan);
 	//联系人数据更新
 	void update(LinkMan linkMan);
+	//保存联系人
+	void save(LinkMan linkMan);
 }

@@ -4,7 +4,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<TITLE>联系人列表</TITLE> 
+<TITLE>客户拜访列表列表</TITLE> 
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <LINK href="${pageContext.request.contextPath }/css/Style.css" type=text/css rel=stylesheet>
 <LINK href="${pageContext.request.contextPath }/css/Manage.css" type=text/css
@@ -24,7 +24,7 @@
 </HEAD>
 <BODY>
 	<FORM id="customerForm" name="customerForm"
-		action="${pageContext.request.contextPath }/linkMan_find.action"
+		action="${pageContext.request.contextPath }/saleVisit_findAll.action"
 		method=post>
 		
 		<TABLE cellSpacing=0 cellPadding=0 width="98%" border=0>
@@ -47,7 +47,7 @@
 					<TD vAlign=top width="100%" bgColor=#ffffff>
 						<TABLE cellSpacing=0 cellPadding=5 width="100%" border=0>
 							<TR>
-								<TD class=manageHead>当前位置：联系人管理 &gt; 联系人列表</TD>
+								<TD class=manageHead>当前位置：拜访记录管理 &gt; 拜访记录列表</TD>
 							</TR>
 							<TR>
 								<TD height=2></TD>
@@ -61,7 +61,7 @@
 										<TABLE cellSpacing=0 cellPadding=2 border=0>
 											<TBODY>
 												<TR>
-													<TD>联系人名称：</TD>
+													<TD>业务员名称：</TD>
 													<TD>
 														<s:textfield theme="simple" cssClass="textbox" id="sChannel2" cssStyle="IDTH: 80px" maxLength="50" name="lkm_name"></s:textfield>
 													</TD>
@@ -85,41 +85,33 @@
 											<TBODY>
 												<TR
 													style="FONT-WEIGHT: bold; FONT-STYLE: normal; BACKGROUND-COLOR: #eeeeee; TEXT-DECORATION: none">
-													<TD>联系人名称</TD>
+													<TD>业务员名称</TD>
 													<TD>客户名称</TD>
-													<TD>性别</TD>
-													<TD>办公电话</TD>
-													<TD>手机</TD>
-													<TD>邮箱</TD>
-													<TD>qq</TD>
-													<TD>职位</TD>
+													<TD>拜访时间</TD>
+													<TD>拜访地址</TD>
+													<TD>拜访详情</TD>
+													<TD>下次拜访时间</TD>
 													<TD>备注</TD>
 													<TD>操作</TD>
 												</TR>
-												<s:iterator value="list" var="linkman">
+												<s:iterator value="list" var="list">
 												<TR
 													style="FONT-WEIGHT: normal; FONT-STYLE: normal; BACKGROUND-COLOR: white; TEXT-DECORATION: none">
-													<TD><s:property value="lkm_name"/></TD>
-													<TD><s:property value="customer.cust_name"/></TD>
+													<TD><s:property value="user.user_name"/></TD>											
+													<TD><s:property value="customer.cust_name"/></TD>	
 													<TD>
-													<s:if test="lkm_gender==1">
-													男
-													</s:if>
-													<s:if test="lkm_gender==2">
-													女
-													</s:if>
+														<s:date name="visit_time" format="yyyy-MM-dd"/>
 													</TD>
-													<TD><s:property value="lkm_phone"/></TD>
-													<TD>${linkman.lkm_mobile}</TD>
-													<TD><s:property value="lkm_email"/></TD>
-													<TD><s:property value="lkm_qq"/></TD>
-													<TD><s:property value="lkm_position"/></TD>
-													<TD><s:property value="lkm_memo"/></TD>	
+													<TD><s:property value="visit_addr"/></TD>
+													<TD><s:property value="visit_detail"/></TD>
+													<TD>
+														<s:date name="visit_nexttime" format="yyyy-MM-dd"/>
+													</TD>	
 																									
 													<TD>
-													<a href="${pageContext.request.contextPath }/linkMan_edit.action?lkm_id=<s:property value="lkm_id"/>">修改</a>
+													<a href="${pageContext.request.contextPath }/saleVisit_edit.action?visit_id=<s:property value="visit_id"/>">修改</a>
 													&nbsp;&nbsp;
-													<a href="${pageContext.request.contextPath }/linkMan_delete.action?lkm_id=<s:property value="lkm_id"/>">删除</a>
+													<a href="${pageContext.request.contextPath }/saleVisit_delete.action?visit_id=<s:property value="visit_id"/>">删除</a>
 													</TD>
 												</TR>
 												
